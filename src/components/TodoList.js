@@ -28,7 +28,7 @@ export default class TodoList extends React.Component {
     handleDoneStatusChange(e) {
         this.setState((prevState) => ({
             todos: prevState.todos.map(todo => {
-                if (todo.id == e.id) {
+                if (todo.id === e.id) {
                     todo.done = e.done;
                 }
 
@@ -39,7 +39,7 @@ export default class TodoList extends React.Component {
 
     handleEditItem(e) {
         this.setState((prevState) => {
-            let item = prevState.todos.find(elem => elem.id == e.id);
+            let item = prevState.todos.find(elem => elem.id === e.id);
 
             return {
                 userInput: item.title,
@@ -64,7 +64,7 @@ export default class TodoList extends React.Component {
 
     handleSaveUserInput() {
         if (this.state.userInput == null ||
-            this.state.userInput == "") {
+            this.state.userInput === "") {
             alert("Input can't be empty!");
             return;
         }
@@ -78,7 +78,7 @@ export default class TodoList extends React.Component {
             if (prevState.editingId) {
                 // update title
                 newState.todos = prevState.todos.map(todo => {
-                    if (todo.id == prevState.editingId) {
+                    if (todo.id === prevState.editingId) {
                         todo.title = prevState.userInput;
                     }
 
