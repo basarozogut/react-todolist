@@ -11,14 +11,14 @@ export default function TodoItem(props) {
         onClick={(e) => props.onDoneStatusChange({ done: !props.item.done, id: props.item.id })}>
         <span className={props.item.done ? 'todo-item-done' : ''}>{props.item.title}</span>
       </label>
-      <a
+      <button
         type="button"
-        className="ms-1"
-        onClick={(e) => props.onEditItem({ id: props.item.id })}>Edit</a>
-      <a
+        className="ms-1 link-button text-primary"
+        onClick={(e) => props.onEditItem({ id: props.item.id })}>Edit</button>
+      <button
         type="button"
-        className="ms-1"
-        onClick={(e) => props.onDeleteItem({ id: props.item.id })}>Delete</a>
+        className="ms-1 link-button text-danger"
+        onClick={(e) => props.onDeleteItem({ id: props.item.id })}>Delete</button>
     </li>
   );
 }

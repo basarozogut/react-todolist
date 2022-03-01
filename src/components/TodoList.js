@@ -52,7 +52,7 @@ export default class TodoList extends React.Component {
     handleDeleteItem(e) {
         if (window.confirm('Are you sure?')) {
             this.setState((prevState) => ({
-                todos: prevState.todos.filter(todo => todo.id != e.id),
+                todos: prevState.todos.filter(todo => todo.id !== e.id),
                 userInput: "",
                 editingId: null
             }));
@@ -107,7 +107,7 @@ export default class TodoList extends React.Component {
     }
 
     areAllTodosComplete() {
-        return this.state.todos.filter(todo => todo.done).length == this.state.todos.length;
+        return this.state.todos.filter(todo => todo.done).length === this.state.todos.length;
     }
 
     render() {
