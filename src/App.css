@@ -44,11 +44,9 @@
 @keyframes appear {
   0% {
     transform: scaleX(0) scaleY(0);
-    height: 0;
   }
   100% {
     transform: scaleX(1) scaleY(1);
-    height: 24px;
   }
 }
 
