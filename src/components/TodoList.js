@@ -107,7 +107,7 @@ export default class TodoList extends React.Component {
     }
 
     areAllTodosComplete() {
-        return this.state.todos.filter(todo => todo.done).length === this.state.todos.length;
+        return this.state.todos.length > 0 && this.state.todos.filter(todo => todo.done).length === this.state.todos.length;
     }
 
     render() {
