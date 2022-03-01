@@ -31,7 +31,7 @@ export default class TodoInput extends React.Component {
   
   render() {
     return (
-      <form className="row g-3 mb-3">
+      <form className="row g-3">
         <div className="col-auto">
           <input
             type="text"

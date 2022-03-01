@@ -1,4 +1,5 @@
 import React from "react";
+import Congratulations from "./Congratulations";
 import TodoInput from './TodoInput'
 import TodoItem from "./TodoItem";
 
@@ -105,15 +106,24 @@ export default class TodoList extends React.Component {
         });
     }
 
+    areAllTodosComplete() {
+        return this.state.todos.filter(todo => todo.done).length == this.state.todos.length;
+    }
+
     render() {
         return (
             <div className="col-md-6 offset-md-3 mt-5">
                 <h1>My To Do List</h1>
-                <TodoInput
-                    value={this.state.userInput}
-                    onUserInputChange={this.handleUserInputChange}
-                    onSaveUserInput={this.handleSaveUserInput}
-                    onNewItem={this.handleNewItem} />
+                <div className="mb-3">
+                    <TodoInput
+                        value={this.state.userInput}
+                        onUserInputChange={this.handleUserInputChange}
+                        onSaveUserInput={this.handleSaveUserInput}
+                        onNewItem={this.handleNewItem} />
+                </div>
+                <div className="mb-3">
+                    <Congratulations visible={this.areAllTodosComplete()} />
+                </div>
                 <ul className='list-unstyled'>
                     {this.state.todos.map(todo =>
                         <TodoItem key={todo.id}
