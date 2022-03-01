@@ -6,19 +6,26 @@ export default class TodoInput extends React.Component {
 
     this.handleUserInputChange = this.handleUserInputChange.bind(this);
     this.handleSaveClick = this.handleSaveClick.bind(this);
+    this.handleNewItemClick = this.handleNewItemClick.bind(this);
   }
 
   handleUserInputChange(e) {
     this.props.onUserInputChange({ input: e.target.value });
   }
 
-  handleSaveClick() {
+  handleSaveClick(e) {
+    e.preventDefault();
     this.props.onSaveUserInput();
+  }
+
+  handleNewItemClick(e) {
+    e.preventDefault();
+    this.props.onNewItem();
   }
   
   render() {
     return (
-      <div className="row g-3 mb-3">
+      <form className="row g-3 mb-3">
         <div className="col-auto">
           <input
             type="text"
@@ -34,9 +41,9 @@ export default class TodoInput extends React.Component {
         <div className="col-auto">
           <button
             className="form-control"
-            onClick={this.props.onNewItem}>New Item</button>
+            onClick={this.handleNewItemClick}>New Item</button>
         </div>
-      </div>
+      </form>
     );
   }
 }
