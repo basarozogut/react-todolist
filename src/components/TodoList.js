@@ -107,7 +107,11 @@ export default class TodoList extends React.Component {
     }
 
     areAllTodosComplete() {
-        return this.state.todos.length > 0 && this.state.todos.filter(todo => todo.done).length === this.state.todos.length;
+        return this.areAnyTodosPresent() && this.state.todos.filter(todo => todo.done).length === this.state.todos.length;
+    }
+
+    areAnyTodosPresent() {
+        return this.state.todos.length > 0;
     }
 
     render() {
@@ -124,15 +128,20 @@ export default class TodoList extends React.Component {
                 <div className="mb-3">
                     <Congratulations visible={this.areAllTodosComplete()} />
                 </div>
-                <ul className='list-unstyled'>
-                    {this.state.todos.map(todo =>
-                        <TodoItem key={todo.id}
-                            item={todo}
-                            onDoneStatusChange={this.handleDoneStatusChange}
-                            onEditItem={this.handleEditItem}
-                            onDeleteItem={this.handleDeleteItem} />
-                    )}
-                </ul>
+                {
+                    this.areAnyTodosPresent() ?
+                        <ul className='list-unstyled'>
+                            {this.state.todos.map(todo =>
+                                <TodoItem key={todo.id}
+                                    item={todo}
+                                    onDoneStatusChange={this.handleDoneStatusChange}
+                                    onEditItem={this.handleEditItem}
+                                    onDeleteItem={this.handleDeleteItem} />
+                            )}
+                        </ul>
+                        :
+                        <p>The list is empty.</p>
+                }
             </div>
         );
     }
