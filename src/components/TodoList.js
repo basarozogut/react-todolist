@@ -116,7 +116,7 @@ export default class TodoList extends React.Component {
 
     render() {
         return (
-            <div className="col-md-6 offset-md-3 mt-5">
+            <div className="col-md-6 offset-md-3 mt-2">
                 <h1>My To Do List</h1>
                 <div className="mb-3">
                     <TodoInput
