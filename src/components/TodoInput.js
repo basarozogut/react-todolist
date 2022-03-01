@@ -1,23 +1,42 @@
-export default function TodoInput(props) {
-  return (
-    <div className="row mb-3">
-      <div className="col-md-3">
-        <input
-          type="text"
-          value={props.value}
-          className="form-control"
-          onChange={(e) => props.onUserInputChange({ input: e.target.value })} />
+import React from "react";
+
+export default class TodoInput extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleUserInputChange = this.handleUserInputChange.bind(this);
+    this.handleSaveClick = this.handleSaveClick.bind(this);
+  }
+
+  handleUserInputChange(e) {
+    this.props.onUserInputChange({ input: e.target.value });
+  }
+
+  handleSaveClick() {
+    this.props.onSaveUserInput();
+  }
+  
+  render() {
+    return (
+      <div className="row g-3 mb-3">
+        <div className="col-auto">
+          <input
+            type="text"
+            value={this.props.value}
+            className="form-control"
+            onChange={this.handleUserInputChange} />
+        </div>
+        <div className="col-auto">
+          <button
+            className="form-control"
+            onClick={this.handleSaveClick}>Save</button>
+        </div>
+        <div className="col-auto">
+          <button
+            className="form-control"
+            onClick={this.props.onNewItem}>New Item</button>
+        </div>
       </div>
-      <div className="col-md-1">
-        <button
-          className="form-control"
-          onClick={(e) => props.onSaveUserInput({ input: props.value })}>Save</button>
-      </div>
-      <div className="col-md-2">
-        <button
-          className="form-control"
-          onClick={props.onNewItem}>New Item</button>
-      </div>
-    </div>
-  );
+    );
+  }
 }

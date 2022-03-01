@@ -49,11 +49,13 @@ export default class TodoList extends React.Component {
     }
 
     handleDeleteItem(e) {
-        this.setState((prevState) => ({
-            todos: prevState.todos.filter(todo => todo.id != e.id),
-            userInput: "",
-            editingId: null
-        }));
+        if (window.confirm('Are you sure?')) {
+            this.setState((prevState) => ({
+                todos: prevState.todos.filter(todo => todo.id != e.id),
+                userInput: "",
+                editingId: null
+            }));
+        }
     }
 
     handleUserInputChange(e) {
@@ -105,8 +107,8 @@ export default class TodoList extends React.Component {
 
     render() {
         return (
-            <div className="col-md-12">
-                <h1>My Todo List</h1>
+            <div className="col-md-6 offset-md-3 mt-5">
+                <h1>My To Do List</h1>
                 <TodoInput
                     value={this.state.userInput}
                     onUserInputChange={this.handleUserInputChange}
