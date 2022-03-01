@@ -82,7 +82,10 @@ export default class TodoList extends React.Component {
                 // update title
                 newState.todos = prevState.todos.map(todo => {
                     if (todo.id === prevState.editingId) {
-                        todo.title = prevState.userInput;
+                        return {
+                            ...todo,
+                            title: prevState.userInput
+                        };
                     }
 
                     return todo;
